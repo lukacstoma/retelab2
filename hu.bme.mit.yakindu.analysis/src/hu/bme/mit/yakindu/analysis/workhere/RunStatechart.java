@@ -11,8 +11,7 @@ import hu.bme.mit.yakindu.analysis.example.IExampleStatemachine;
 
 
 public class RunStatechart {
-		
-	public static void main(String[] args) throws IOException {
+public static void main(String[] args) throws IOException {
 		ExampleStatemachine s = new ExampleStatemachine();
 		s.setTimer(new TimerService());
 		RuntimeService.getInstance().registerStatemachine(s, 200);
@@ -34,6 +33,9 @@ public class RunStatechart {
 				case "black":
 					s.raiseBlack();
 					break;
+				case "addedevent":
+					s.raiseAddedevent();
+					break;
 				default:
 					System.out.println("Bad command!");
 			}
@@ -46,7 +48,9 @@ public class RunStatechart {
 	}
 
 	public static void print(IExampleStatemachine s) {
+		System.out.println("A = " + s.getSCInterface().getAddedvar());
 		System.out.println("W = " + s.getSCInterface().getWhiteTime());
 		System.out.println("B = " + s.getSCInterface().getBlackTime());
-	}
+	} 
 }
+

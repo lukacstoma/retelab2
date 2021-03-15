@@ -24,6 +24,22 @@ public class ExampleStatemachine implements IExampleStatemachine {
 			black = true;
 		}
 		
+		private boolean addedevent;
+		
+		public void raiseAddedevent() {
+			addedevent = true;
+		}
+		
+		private long addedvar;
+		
+		public long getAddedvar() {
+			return addedvar;
+		}
+		
+		public void setAddedvar(long value) {
+			this.addedvar = value;
+		}
+		
 		private long whiteTime;
 		
 		public long getWhiteTime() {
@@ -48,6 +64,7 @@ public class ExampleStatemachine implements IExampleStatemachine {
 			start = false;
 			white = false;
 			black = false;
+			addedevent = false;
 		}
 	}
 	
@@ -84,6 +101,8 @@ public class ExampleStatemachine implements IExampleStatemachine {
 		}
 		clearEvents();
 		clearOutEvents();
+		sCInterface.setAddedvar(1);
+		
 		sCInterface.setWhiteTime(60);
 		
 		sCInterface.setBlackTime(60);
@@ -213,6 +232,18 @@ public class ExampleStatemachine implements IExampleStatemachine {
 	
 	public void raiseBlack() {
 		sCInterface.raiseBlack();
+	}
+	
+	public void raiseAddedevent() {
+		sCInterface.raiseAddedevent();
+	}
+	
+	public long getAddedvar() {
+		return sCInterface.getAddedvar();
+	}
+	
+	public void setAddedvar(long value) {
+		sCInterface.setAddedvar(value);
 	}
 	
 	public long getWhiteTime() {
